@@ -5,6 +5,8 @@ import (
 	"encoding/json"
 	"io"
 	"net/http"
+
+	log "github.com/sirupsen/logrus"
 )
 
 type OllamaRequest struct {
@@ -18,6 +20,7 @@ type OllamaResponse struct {
 }
 
 func CallLLM(prompt string) (string, error) {
+	log.Debug("Отправляем запрос llm: ", prompt)
 	reqBody := OllamaRequest{
 		Model:  "llama3.2:3b",
 		Prompt: prompt,
@@ -42,5 +45,6 @@ func CallLLM(prompt string) (string, error) {
 	var result OllamaResponse
 	json.Unmarshal(body, &result)
 
+	log.Debug("Ответ LLM: ", result.Response)
 	return result.Response, nil
 }
