@@ -18,7 +18,7 @@ func init() {
 }
 
 func main() {
-	resp, err := llm.CallLLM("Напиши скрипт на python который выводит hello world!")
+	resp, err := llm.CallLLM("Напиши скрипт на python который выводит hello world!.")
 	if err != nil {
 		panic(err)
 	}
@@ -26,4 +26,5 @@ func main() {
 	fin := scripts.ExtractScript(resp)
 	scripts.CreateScript(fin)
 	scripts.RunScript()
+	scripts.DeleteScript()
 }

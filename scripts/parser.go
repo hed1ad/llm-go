@@ -11,11 +11,11 @@ func ExtractScript(response string) string {
 	log.Debug("Обрабатываем скрипт")
 	re := regexp.MustCompile("(?s)```(?:python)?\n?(.*?)```")
 	matches := re.FindStringSubmatch(response)
+	log.Debug("Результат обработки: ", matches)
 
 	if len(matches) > 1 {
 		return strings.TrimSpace(matches[1])
 	}
-	log.Debug("Результат обработки: ", strings.TrimSpace(matches[1]))
 
 	return ""
 }

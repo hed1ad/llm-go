@@ -19,3 +19,7 @@ func CreateScript(script string) {
 	defer file.Close()
 	file.WriteString(script)
 }
+
+func DeleteScript() {
+	os.Remove("script.py")
+}
