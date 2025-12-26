@@ -1,6 +1,7 @@
 package main
 
 import (
+	"hed1ad/llm_golang/infra"
 	"hed1ad/llm_golang/llm"
 	"hed1ad/llm_golang/scripts"
 	"os"
@@ -18,6 +19,8 @@ func init() {
 }
 
 func main() {
+	report := infra.HardInfo()
+	log.Debug(report)
 	resp, err := llm.CallLLM("Напиши скрипт на python который выводит hello world!.")
 	if err != nil {
 		panic(err)
